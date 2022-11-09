@@ -9,3 +9,5 @@ SCRAPING_OVEN = Busca dentro do site do Mercado Livre forno de embutir de 220w e
 SCRAPING_OVEN_WITH_SELENIUM = Busca dentro do site do Mercado Livre forno de embutir de 220w e envia e-mail caso encontre o produto com o valor abaixo do procurado com template no corpo do e-mail. Utiliza Selenium para automatização do processo
 da página.
 
+BotLinkedin = Utilizando o Selenium, realiza buscas no site do Linkedin sobre vagas em Python.  
+
