@@ -1,0 +1,1 @@
+OBS: Necessário criar um arquivo chamado dados_email.py para inserir os dados solicitados para envio do e-mail de acordo com o seu servidor smtp.
