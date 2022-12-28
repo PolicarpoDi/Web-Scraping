@@ -11,3 +11,5 @@ da página.
 
 BotLinkedin = Utilizando o Selenium, realiza buscas no site do Linkedin sobre vagas em Python.  
 
+WebScrapingAPI = Utilizando o WebScraping para buscar informações de ações por meio da api da StatusInvest
+
