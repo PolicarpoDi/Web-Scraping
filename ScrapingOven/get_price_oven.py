@@ -5,9 +5,9 @@ from string import Template
 import requests
 from bs4 import BeautifulSoup
 import smtplib
-from Scraping_Oven.dados_email import *
 from termcolor import colored as cores
 import time
+from decouple import config
 
 
 url = 'https://www.mercadolivre.com.br/forno-de-embutir-eletrico-brastemp-boc84-84l-preto-220v/p/MLB9990127?pdp_filters=category:MLB120314#searchVariation=MLB9990127&position=1&search_layout=stack&type=product&tracking_id=9c82cd80-1459-4589-85c9-f674708f14a3'
@@ -32,13 +32,13 @@ def send_email():
     with open('template.html', 'r') as html:
         template = Template(html.read())
         data = datetime.now().strftime('%d/%m/%Y')
-        corpo_msg = template.substitute(nome=SeuNome, data=data, descricao=title, preco=price, link=url) 
+        corpo_msg = template.substitute(nome=config('SeuNome'), data=data, descricao=title, preco=price, link=url) 
     
     msg = MIMEMultipart()
     # Email que vai enviar
-    msg['from'] = meu_email 
+    msg['from'] = config('meu_email') 
     # Email que vai receber
-    msg['to'] = destino_email    
+    msg['to'] = config('destino_email')    
     # Titulo
     msg['subject'] = f'Monitoramento detectou o produto {title} abaixo do preço procurado.'
 
@@ -46,13 +46,13 @@ def send_email():
     # Envia o corpo do email
     msg.attach(corpo) 
     
-    smtp = smtplib.SMTP(host_smtp, porta)
+    smtp = smtplib.SMTP(config('host_smtp'), config('porta'))
     smtp.starttls()
-    smtp.login(meu_email, minha_senha)
-    smtp.sendmail(destino_email, meu_email, msg.as_string())
+    smtp.login(config('meu_email'), config('minha_senha'))
+    smtp.sendmail(config('destino_email'), config('meu_email'), msg.as_string())
 
 
-with smtplib.SMTP(host=host_smtp, port=porta) as smtp:
+with smtplib.SMTP(host=config('host_smtp'), port=config('porta')) as smtp:
     if (num_price < 2800):
         try:
             send_email()
