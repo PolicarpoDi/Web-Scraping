@@ -1,1 +1,1 @@
-OBS: Necessário criar um arquivo chamado dados_email.py para inserir os dados solicitados para envio do e-mail de acordo com o seu servidor smtp.
+OBS: Necessário criar um arquivo chamado .env para inserir os dados solicitados para envio do e-mail de acordo com o seu servidor smtp. Utilizei a lib python-decouple para criar as variáveis de ambiente.
